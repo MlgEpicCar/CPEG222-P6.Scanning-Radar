@@ -10,6 +10,4 @@ void OLED_WriteData(const uint8_t *buf, size_t len);// Write a buffer of data to
 void OLED_Print(uint8_t page, uint8_t col, const char *s);// Print a string to the display at the specified page and column
 void SH1106_RenderFullScreenLogo(void);// Render the full-screen logo on the OLED display
 
-void OLED_InvertedCheck(void);
-void OLED_TextCrawling(int *Y_coord, int *X_coord);
 #endif

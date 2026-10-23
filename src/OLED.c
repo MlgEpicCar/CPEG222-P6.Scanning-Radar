@@ -243,26 +243,3 @@ void SH1106_RenderFullScreenLogo(void) {
         }
     }
 }
-
-void OLED_InvertedCheck(void) {
-    if (SWITCH_PORT-> IDR & (1U << S1)) {
-        OLED_WriteCmd(0xA7); // Inverted display mode
-    } else {
-        OLED_WriteCmd(0xA6); // Normal display mode
-    }
-}
-
-void OLED_TextCrawling(int *Y_coord, int *X_coord) {
-    if (!(BUTTON_PORT_E_RD->IDR & (1U << RIGHT_PIN)) && (*X_coord < 49)) // Move Right
-        *X_coord += 6; // This is 6 since each character is 5 columns wide and each space is 1 column wide, so the letters move 1 full letter
-    else if (!(BUTTON_PORT_F_LCU->IDR & (1U << LEFT_PIN)) && (*X_coord > 0)) // Move Left
-        *X_coord -= 6;
-    else if (!(BUTTON_PORT_E_RD->IDR & (1U << DOWN_PIN)) && (*Y_coord < 7)) // Move Down
-        *Y_coord += 1;
-    else if (!(BUTTON_PORT_F_LCU->IDR & (1U << UP_PIN)) && (*Y_coord > 2)) // Move Up
-        *Y_coord -= 1;
-    else if (!(BUTTON_PORT_F_LCU->IDR & (1U << CENTER_PIN))) {  // Resets Text
-        *Y_coord = 3;
-        *X_coord = 0;
-    }
-}
