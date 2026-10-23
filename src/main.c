@@ -1,12 +1,11 @@
 // ****************************************************************
-// * Authors: T. LUM and R. MARTIN
-// * CPEG222 Demo Program5, 9/28/2026
-// * NucleoF446ZE CMSIS STM32F4xx example Proj5
-// * Sends text to the OLED display using SPI
+// * Carlos Munar
+// * Scanning Radar - 10/23/2026
 // ****************************************************************
 #include "stm32f4xx.h"
 #include "OLED.h"
 #include "UART3.h"
+#include "eyes.h"
 #include "SysClock180MHz.h"
 #include <stdint.h> // Include stdint.h for uint32_t type
 #include <stdio.h> // Include stdio.h for snprintf function
@@ -41,9 +40,9 @@ int main(void){
     UART3_Init(115200);
     eyes_Init();
 
-    SH1106_RenderFullScreenLogo();
-    delay_ms(2000); // Delay for 2 seconds to display the logo
-    OLED_Clear();
+    // SH1106_RenderFullScreenLogo();
+    // delay_ms(2000); // Delay for 2 seconds to display the logo
+    // OLED_Clear();
     OLED_Print(0, 0, "Range Finder Demo");
     OLED_Print(1, 0, "C. Munar: 10/23/26");
 
